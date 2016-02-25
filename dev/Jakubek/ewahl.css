@@ -1,0 +1,149 @@
+/*!
+ * Bootstrap v3.3.2 (http://getbootstrap.com)
+ * Copyright 2011-2015 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+
+ .col-xs-2 {
+     background-color: #f5f3f3;
+ }
+
+ a.tooltips {
+   position: relative;
+   display: inline;
+ }
+ a.tooltips span {
+   position: absolute;
+   width:140px;
+   color: #FFFFFF;
+   background: #000000;
+   height: 30px;
+   line-height: 30px;
+   text-align: center;
+   visibility: hidden;
+   border-radius: 6px;
+ }
+ a.tooltips span:after {
+   content: '';
+   position: absolute;
+   top: 100%;
+   left: 50%;
+   margin-left: -8px;
+   width: 0; height: 0;
+   border-top: 8px solid #000000;
+   border-right: 8px solid transparent;
+   border-left: 8px solid transparent;
+ }
+ a:hover.tooltips span {
+   visibility: visible;
+   opacity: 0.8;
+   bottom: 30px;
+   left: 50%;
+   margin-left: -76px;
+   z-index: 999;
+ }
+
+
+/*# sourceMappingURL=bootstrap.css.map */
+
+/* own css */
+
+.panel-info > .panel-heading {
+    color: #ffffff;
+    background-color: #005d37;
+    border-color: #005d37;
+}
+.panel-info {
+    border-color: #005d37;
+}
+
+.jumbotron {
+    background-color: #005d37;
+}
+
+.btn-success {
+    background-color: #005d37;
+    border-color: #005d37;
+}
+.navElement {
+    background-color: #005d37;
+    color: white;
+    vertical-align: middle;
+    text-decoration: none;
+}
+.navElement:hover {
+    background-color: white;
+    color: #005d37;
+    vertical-align: middle;
+    text-decoration: none;
+}
+
+.textblack {
+    color: black;
+}
+
+.textred {
+    color: #c12e2a;
+}
+
+.textgreen {
+    color: #005d37;
+}
+.textwhite {
+  color: #FFF;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.whitelink {
+    color: white;
+    text-decoration: none;
+}
+
+.whitelink:active {
+    color: white;
+    text-decoration: none;
+}
+
+.whitelink:visited {
+    color: white;
+    text-decoration: none;
+}
+
+.whitelink:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.whitelink:after {
+    color: white;
+    text-decoration: none;
+}
+
+.blacklink {
+    color: black;
+    text-decoration: none;
+}
+
+.blacklink:active {
+    color: black;
+    text-decoration: none;
+}
+
+.blacklink:visited {
+    color: black;
+    text-decoration: none;
+}
+
+.blacklink:hover {
+    color: #005d37;
+    text-decoration: none;
+}
+
+.blacklink:after {
+    color: black;
+    text-decoration: none;
+}
+
+.greyBackground{
+    background-color: #999999;
+}

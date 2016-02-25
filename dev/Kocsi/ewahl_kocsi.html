@@ -1,0 +1,189 @@
+<head>
+    <title>eWahl Wahlergebnisse</title>
+</head>
+
+<body>
+{{> header}}
+{{> suche_und_tabelle_und_graph}}
+
+</body>
+<template name="header">
+    <div class="row jumbotron">
+        <div class="col-xs-1">&nbsp;</div>
+        <div class="col-xs-3"><img src="logo.png" width="90%" alt="logo"/></div>
+        <div class="col-xs-1">&nbsp;</div>
+        <div class="col-xs-6">&nbsp;</div>
+        <div class="col-xs-1">&nbsp;</div>
+    </div>
+</template>
+
+<template name="suche_und_tabelle_und_graph">
+    <div class="container textblack">
+        <div class="row">
+            <div class="col-xs-6">
+                <!-- Tabelle -->
+                <div class="panel panel-info" align="left">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-6"> <h4>Ergebnistabelle </h4></div>
+                            <div class="col-xs-6">{{> EasySearch.Input index=resultsIndex attributes=inputAttributes}}</div>
+                        </div>
+                    </div>
+                    <div class="panel-body pre-scrollable">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Vorname</th>
+                                    <th>Nachname</th>
+                                    <th>Standort</th>
+                                    <th>Stimmem</th>
+                                    <th>Anmerkung</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#EasySearch.Each index=resultsIndex}}
+                                    <tr>
+                                        <td>{{vname}}    {{>editVname}}</td>
+                                        <td>{{nname}}    {{>editNname}}</td>
+                                        <td>{{standort}} {{>editStd}}</td>
+                                        <td>{{stimmen}}  {{>editStimmen}}</td>
+                                        <td>{{amk}}      {{>editAmk}}</td>
+                                        <td><a class="btn btn-danger btn-sm" role="button" id="delete" name="{{_id}}">Löschen</a></td>
+                                    </tr>
+                                {{/EasySearch.Each}}
+
+                                {{#EasySearch.IfNoResults index=resultsIndex}}
+                                    <div class="no-results">Keine Einträge!</div>
+                                {{/EasySearch.IfNoResults}}
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Start Button Kandidat hinzufügen -->
+                    <div class="row">
+                        <div class="col-xs-12" align="left" style="padding-left: 20px; padding-bottom: 5px">
+                            <a class="btn btn-success btn-md" href="#addUser" data-toggle="modal" role="button" id="add" >Kandidat anlegen</a>
+                        </div>
+                    </div>
+                    <!-- Ende Button Kandidat hinzufügen -->
+                    <!-- Start Modal Kandidat hinzufügen -->
+                    <div class="modal fade" id="addUser" role="dialog">
+                        <div class="modal-dialog">
+                            {{> addUser_content}}
+                        </div>
+                    </div>
+                    <!-- Ende Modal Kandidat hinzufügen -->
+                </div>
+            </div>
+            <!-- Start Graph Panel -->
+            <div class="col-xs-6">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        Ergebnisgraph
+                    </div>
+                    <div class="panel-body" align="center">
+                        <div id="chart1" width="100%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+
+<template name="table_content">
+    <div class="container textblack">
+        <div class="row">
+            <div class="col-xs-6">
+                <!-- Tabelle -->
+                {{> suche_und_tabelle}}
+            </div>
+            <!-- Graph -->
+            <!--<div class="col-xs-6">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        Ergebnisgraph
+                    </div>
+                    <div class="panel-body" align="center">
+                            <div id="chart1" width="100%"></div>
+                    </div>
+                </div>
+            </div> -->
+    </div>
+    </div>
+</template>
+
+<template name="result">
+    <tr>
+        <td>{{vname}} {{>editVname}}</td>
+        <td>{{nname}} {{>editNname}}</td>
+        <td>{{standort}} {{>editStd}}</td>
+        <td>{{stimmen}} {{>editStimmen}}</td>
+        <td>{{amk}} {{>editAmk}}</td>
+        <td><a class="btn btn-danger btn-sm" role="button" id="delete" name="{{_id}}">Löschen</a></td>
+    </tr>
+</template>
+
+
+<template name="addUser_content">
+    <div class="alert alert-danger fade in" id="myAlert" style="display: none">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Fehler!</strong> Es wurden nicht alle Felder ausgefüllt
+    </div>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="textgreen">Kandidat Hinzufügen</h3>
+            <hr>
+            <p><b>Vorname:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="vname"></p>
+
+            <p><b>Nachname:</b>&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="nname"></p>
+
+            <p><b>Standort:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="standort"></p>
+
+            <p><b>Stimmen:</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="stimmen"></p>
+
+            <p><b>Anmerkung:</b> &nbsp;<input type="text" id="amk" value="-"></p>
+            <hr>
+            <div align="right"><input type="button" class="btn btn-success btn-lg" value="Speichern" id="save_add"></div>
+        </div>
+    </div>
+</template>
+
+<template name="editVname">
+    <div class="row">
+        <div class="col-xs-12">
+            {{> xEditable type="text" success=onSuccess placement="right" emptytext="ändern"}}
+        </div>
+    </div>
+</template>
+
+<template name="editNname">
+    <div class="row">
+        <div class="col-xs-12">
+            {{> xEditable type="text" success=onSuccess placement="right" emptytext="ändern"}}
+        </div>
+    </div>
+</template>
+
+<template name="editStd">
+    <div class="row">
+        <div class="col-xs-12">
+            {{> xEditable type="text" success=onSuccess placement="top" emptytext="ändern"}}
+        </div>
+    </div>
+</template>
+
+<template name="editStimmen">
+    <div class="row">
+        <div class="col-xs-12">
+            {{> xEditable type="text" success=onSuccess placement="top" emptytext="ändern"}}
+        </div>
+    </div>
+</template>
+
+<template name="editAmk">
+    <div class="row">
+        <div class="col-xs-12">
+            {{> xEditable type="text" success=onSuccess placement="left" emptytext="ändern"}}
+        </div>
+    </div>
+</template>

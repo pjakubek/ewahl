@@ -1,0 +1,443 @@
+<head>
+    <title>eWahl</title>
+</head>
+
+<body class="body">
+{{> header}}
+{{> checklist}}
+{{> footer}}
+{{singleuser}}
+</body>
+
+<template name="header">
+    <div class="row header">
+        <div class="col-xs-3" style="top: 20%; left: 5%">
+
+            <img src="logo.png" alt="eWahl logo" width="100%">
+
+        </div>
+        <div class="col-xs-6">&nbsp;</div>
+        <div class="col-xs-3" style="top: 25%; right: 5%">
+            <div class="row">
+                <div class="panel panel-default" style="background-color: white">
+                    <div class="panel heading textwhite" style="background-color: #005d37">Angemeldet als: <br><b>{{currentUser.username}}</b>
+                    </div>
+                    <button type="button" class="btn btn-default btn-xs">Hilfe</button>
+                    <button type="button" class="btn btn-default btn-xs" id="logout">Logout</button>
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</template>
+
+<!-- templates for checklist START -->
+<template name="checklist">
+    {{checklist_land}}
+    <div class="container textblack content">
+        <div class="row">
+            <div class="col-md-3">
+
+                <select id="bundeslandChecklist" style="width: 100%">
+                    <option>Alle Schulen</option>
+                    <option>Wien</option>
+                    <option>Niederösterreich</option>
+                    <option>Burgenland</option>
+                    <option>Steiermark</option>
+                    <option>Oberösterreich</option>
+                    <option>Salzburg</option>
+                    <option>Kärnten</option>
+                    <option>Tirol</option>
+                    <option>Vorarlberg</option>
+                    <option>Auslandschulen</option>
+                </select>
+
+            </div>
+            <div class="col-md-3">
+
+                <select id="filter" style="width: 100%">
+                    <option>noch Formulare offen</option>
+                    <option>alle Formulare erledigt</option>
+                </select>
+
+            </div>
+            <div class="col-md-6">
+
+            </div>
+        </div>
+        <div class="row">&nbsp;</div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        Checkliste - Burgenland
+                    </div>
+                    <div class="panel-body pre-scrollable">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>DWA Nr.</th>
+                                <th>Schulkennzahl</th>
+                                <th>Schulkurzname</th>
+                                <th>Bundlehrer</th>
+                                <th>Stimmzettel</th>
+                                <th>09</th>
+                                <th>08</th>
+                                <th>11</th>
+                                <th>23</th>
+                                <th>25</th>
+                                <th>16</th>
+                                <th>29</th>
+                                <th>19</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {{#each users}}
+                            {{> user}}
+                            {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12" align="right">
+                <input type="button" class="btn btn-success btn-lg" id="submit" name="submit" value="Speichern">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="success" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="textgreen">Erfolg!</h2>
+                </div>
+                <div class="modal-body textblack">
+                    <h4 class="textblack">Ihre Einträge wurden erfolgreich übernommen</h4>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-success btn-lg" href="checklist.php">Schliessen</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</template>
+<template name="user">
+    <tr>
+        <td>{{dNr}}</td>
+        <td>{{sKz}}</td>
+        <td>{{sKn}}</td>
+        <td>{{bLehrer}}</td>
+        <td>{{sZettel}}</td>
+        <td><input type="checkbox" name="{{_id}}" id="f09" {{f09}}></td>
+        <td><input type="checkbox" name="{{_id}}" id="f08" {{f08}}></td>
+        <td><input type="checkbox" name="{{_id}}" id="f11" {{f11}}></td>
+        <td><input type="checkbox" name="{{_id}}" id="f23" {{f23}}></td>
+        <td><input type="checkbox" name="{{_id}}" id="f25" {{f25}}></td>
+        <td><input type="checkbox" name="{{_id}}" id="f16" {{f16}}></td>
+        <td><input type="checkbox" name="{{_id}}" id="f29" {{f29}}></td>
+        <td><input type="checkbox" name="{{_id}}" id="f19" {{f19}}></td>
+    </tr>
+</template>
+<!-- templates for checklist END -->
+<template name="user_management">
+    <div class="container textblack content" style="z-index: 1">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <b>Benutzerübersicht</b>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+
+                    <div class="col-xs-2">
+
+                        <select id="bundesland">
+                            <option>Alle Schulen</option>
+                            <option>Wien</option>
+                            <option>Niederösterreich</option>
+                            <option>Burgenland</option>
+                            <option>Steiermark</option>
+                            <option>Oberösterreich</option>
+                            <option>Salzburg</option>
+                            <option>Kärnten</option>
+                            <option>Tirol</option>
+                            <option>Vorarlberg</option>
+                            <option>Auslandschulen</option>
+                        </select>
+
+                    </div>
+                    <div class="col-xs-1"> &nbsp; </div>
+
+                    <div class="col-xs-8">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Benutzer Suchen">
+        <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Los!</button>
+        </span></div>
+                    </div>
+                    <div class="col-xs-1"> &nbsp; </div>
+
+                </div>
+                <hr>
+                <div class="row pre-scrollable">
+                    <div class="col-xs-12">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>DWA Nr.</th>
+                                <th>Schulkennzahl</th>
+                                <th>Schulkurzname</th>
+                                <th>Bundesland</th>
+                                <th>Gruppe</th>
+                                <th>&nbsp;</th>
+                                <th>&nbsp;</th>
+                                <th>&nbsp;</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {{#each users}}
+                            <tr>
+                                <td>{{dNr}}</td>
+                                <td>{{sKz}}</td>
+                                <td>{{sKn}}</td>
+                                <td>{{bLand}}</td>
+                                <td>{{gruppe}}</td>
+                                <td><a class="btn btn-success btn-sm" href="#modalView" data-toggle="modal"
+                                       role="button" id="view" name="{{_id}}">Details</a>
+                                </td>
+                                <td><a class="btn btn-success btn-sm" href="#modalEdit" id="edit" data-toggle="modal"
+                                       role="button" name="{{_id}}">Bearbeiten</a>
+                                </td>
+                                <td><a class="btn btn-danger btn-sm" role="button" id="delete"
+                                       name="{{_id}}">Löschen</a></td>
+                            </tr>
+                            {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12" align="center">
+                <a class="btn btn-success btn-lg" href="#addUser" data-toggle="modal" role="button" id="add">Benutzer
+                    anlegen</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addUser" role="dialog">
+        <div class="modal-dialog">
+            {{ >addUser_content}}
+        </div>
+
+    </div>
+
+
+    <div class="modal fade" id="modalView" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="textgreen">Benutzerdetails:</h3>
+                    <br>
+
+
+                    <table class="table table-striped">
+                        <tbody>
+                        <tr>
+                            <td><b>DWA Nr:</b></td>
+                            <td>{{user.dNr}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Schulkennzahl:</b></td>
+                            <td>{{user.sKz}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Schulkurzname:</b></td>
+                            <td>{{user.sKn}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>E-Mail:</b></td>
+                            <td>{{user.email}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Bundesland</b></td>
+                            <td>{{user.bLand}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Zugehörigkeit:</b></td>
+                            <td>{{user.gruppe}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Bundlehrer:</b></td>
+                            <td>{{user.bLehrer}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Stimmzettel:</b></td>
+                            <td>{{user.sZettel}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+
+                    <hr>
+                    <p align="center">Um dieses Fenster zu Schließen klicken Sie bitte in den grauen Bereich
+                        daneben.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalEdit" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="textgreen">Benutzer Bearbeiten:</h3>
+                    <hr>
+
+                    <table class="table table-striped">
+                        <tbody>
+                        <tr>
+                            <td><b>DWA Nr:</b></td>
+                            <td><input type="text" id="edit_dNr" class="form-control" placeholder="{{user.dNr}}"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Schulkennzahl</b></td>
+                            <td><input type="text" id="edit_sKz" class="form-control" placeholder="{{user.sKz}}"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Schulkurzname</b></td>
+                            <td><input type="text" id="edit_sKn" class="form-control" placeholder="{{user.sKn}}"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Bundesland</b></td>
+                            <td>
+                                <form action="#">
+                                    <select id="edit_bundesland">
+                                        <option>Wien</option>
+                                        <option>Niederösterreich</option>
+                                        <option>Burgenland</option>
+                                        <option>Steiermark</option>
+                                        <option>Oberösterreich</option>
+                                        <option>Salzburg</option>
+                                        <option>Kärnten</option>
+                                        <option>Tirol</option>
+                                        <option>Vorarlberg</option>
+                                        <option>Auslandschulen</option>
+                                    </select>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>Zugehörigkeit</b></td>
+                            <td><input type="text" id="edit_gruppe" class="form-control" placeholder="{{user.gruppe}}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>E-Mail</b></td>
+                            <td><input type="text" id="edit_email" class="form-control" placeholder="{{user.email}}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>Bundlehrer</b></td>
+                            <td><input type="text" id="edit_bLehrer" class="form-control"
+                                       placeholder="{{user.bLehrer}}"></td>
+                        </tr>
+                        <tr>
+                            <td><b>Stimmzettel</b></td>
+                            <td><input type="text" id="edit_sZettel" class="form-control"
+                                       placeholder="{{user.sZettel}}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div align="right"><input type="button" class="btn-success" value="Speichern" id="saveEdit"
+                                              name="{{user._id}}"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</template>
+
+
+<template name="footer">
+    <div class="footer">
+        <div class="footerContent">
+            &copy;&nbsp;2016&nbsp;eWahl&nbsp;|&nbsp;<a class="whitelink" href="#">Impressum</a>
+        </div>
+    </div>
+</template>
+
+<template name="addUser_content">
+    <div class="alert alert-danger fade in" id="myAlert" style="display: none">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Fehler!</strong> Es wurden nicht alle Felder ausgefüllt
+    </div>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="textgreen">Benutzer Hinzufügen</h3>
+            <hr>
+            <table class="table table-striped">
+                <tr>
+                    <td><b>Schulkennzahl</b></td>
+                    <td><input type="text" id="sKz" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td><b>DWA Nr:</b></td>
+                    <td><input type="text" id="dNr" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td><b>Schulkurzname</b></td>
+                    <td><input type="text" id="sKn" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td><b>Bundesland</b></td>
+                    <td>
+                        <form action="#">
+                            <select id="add_bundesland">
+                                <option>Wien</option>
+                                <option>Niederösterreich</option>
+                                <option>Burgenland</option>
+                                <option>Steiermark</option>
+                                <option>Oberösterreich</option>
+                                <option>Salzburg</option>
+                                <option>Kärnten</option>
+                                <option>Tirol</option>
+                                <option>Vorarlberg</option>
+                                <option>Auslandschulen</option>
+                            </select>
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <td><b>Zugehörigkeit</b></td>
+                    <td><input type="text" id="gruppe" class="form-control" placeholder="DA, FA..."></td>
+                </tr>
+                <tr>
+                    <td><b>E-Mail</b></td>
+                    <td><input type="text" id="email" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td><b>Bundlehrer</b></td>
+                    <td><input type="text" id="bLehrer" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td><b>Stimmzettel</b></td>
+                    <td><input type="text" id="sZettel" class="form-control"></td>
+                </tr>
+            </table>
+            <hr>
+            <div align="right"><input type="button" class="btn-success" value="Speichern" id="save_add"></div>
+        </div>
+    </div>
+</template>

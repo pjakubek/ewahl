@@ -1,0 +1,6 @@
+meteor add natestrauser:x-editable-bootstrap
+meteor add workman:meteor-editable
+meteor add workman:x-editable-reactive-template
+meteor add rafaelhdr:google-charts
+meteor add easy:search
+(meteor add npm:container)

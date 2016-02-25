@@ -1,0 +1,503 @@
+
+<head>
+  <title>eWahl</title>
+</head>
+
+<body>
+
+{{#if currentUser}}
+  {{#if isInRole 'admin'}}
+  {{> Admin}}
+  {{else}}
+    {{> Dashboard}}
+  {{/if}}
+{{else}}
+    {{> Login}}
+
+{{/if}}
+
+</body>
+
+<template name="Login">
+
+  <div class="container">
+      <div class="row jumbotron">
+          <div class="row">&nbsp;</div>
+
+          <div class="col-xs-12" align="center"><img src="logo.png" width="60%" alt="logo"/></div>
+          <div class="row">&nbsp;</div>
+
+
+          <div class="row">&nbsp;</div>
+          <div class="row">&nbsp;</div>
+          <div class="row">&nbsp;</div>
+          <div class="col-xs-12 textwhite" align="center">
+            <h2>Willkommen bei eWahl</h2>
+              <h4>Um sicher, zuverl&auml;ssig und zentral zu starten, melden Sie sich bitte mit den vom ZWA bezogenen
+                  Daten an.</h4>
+
+          </div>
+          <div class="row">&nbsp;</div>
+          <div class="col-md-12">
+              <div class="col-md-3">&nbsp;</div>
+              <div class="col-md-6">
+                  <div class="row">&nbsp;</div>
+                  <div class="row">&nbsp;</div>
+                  <div class="row">&nbsp;</div>
+                  <div class="row">&nbsp;</div>
+                  <form role="form">
+          <div class="form-group textwhite">
+            <label for="email">Email-Adresse:</label>
+            <input type="email" class="form-control" id="email">
+          </div>
+          <div class="form-group textwhite">
+            <label for="pwd">Passwort:</label>
+            <input type="password" class="form-control" id="password">
+          </div>
+  <div class="checkbox textwhite">
+    <label><input type="checkbox">Eingeloggt bleiben</label>
+      <button type="submit" class="btn btn-primary pull-right">Anmelden</button>
+  </div>
+
+</form>
+<div class="row">&nbsp;</div>
+
+                  <div class="row" align="center">
+  <button type="reset" class="btn btn-link" href="#helpme" data-toggle="modal">Hilfe</button>
+                  </div>
+                  <div class="row" align="center">
+                      <button type="reset" class="btn btn-link ">Passwort vergessen?</button>
+                  </div>
+              </div>
+              <div class="col-md-3">&nbsp;</div>
+          </div>
+          <div class="row">&nbsp;</div>
+          <div class="row">&nbsp;</div>
+          <div class="row">&nbsp;</div>
+          <div class="row">&nbsp;</div>
+          <div class="row">&nbsp;</div>
+          <div class="row">&nbsp;</div>
+          <div class="row">&nbsp;</div>
+          <div class="row">&nbsp;</div>
+          <div class="row">&nbsp;</div>
+          <div class="row">&nbsp;</div>
+          <div class="row">&nbsp;</div>
+
+
+
+      </div>
+      <div class="row textblack" align="center">&copy; 2015 eWahl | <a href="#">Impressum</a></div>
+      <div class="row">&nbsp;</div>
+  </div>
+
+  <div class="modal fade" id="helpme" role="dialog">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h3 class="textgreen">Hilfe</h3>
+              </div>
+                  <div class="modal-body textblack">
+                      <h5>Bitte wählen Sie jenes Formular aus, dessen ausgefülltes Exemplar Sie hochladen möchten.</h5>
+                      <hr>
+                      <div class="panel-body pre-scrollable">
+                        <table class="table table-hover table-striped table-bordered">
+                          <thead>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td>Hier tragen Sie Ihre Email-Adresse ein</td>
+                            <td><img src="email.png" alt="" width="350" /></td>
+                          </tr>
+                          <tr>
+                            <td>Hier tragen Sie Ihr Passwort ein</td>
+                            <td><img src="pw.png" alt="" width="350" /></td>
+                          </tr>
+                          <tr>
+                            <td>Setzen Sie hier ein Häckchen wenn Sie angemeldet bleiben wollen</td>
+                            <td><img src="angemeldet.png" alt=""   /></td>
+                          </tr>
+                          </tbody>
+                        </table>
+
+
+                      </div>
+                      <hr>
+                      <hr>
+                      Sollten Sie eine Frage haben, und diese ist <b> nicht </b> in
+                      <br>dieser Hilfe abgedeckt bitte kontaktieren Sie den ZWA unter: <br>
+                      Telefon: 01 379406912 <br>
+                      E-Mail: zwa.bmhs@bmbf.gv.at <br>
+                  </div>
+              <div class="modal-footer" align="left">
+                  Dieses Fenster schließen Sie in dem Sie den <b> grauen </b> daneben anklicken!
+              </div>
+          </div>
+      </div>
+  </div>
+</template>
+
+<template name = 'Dashboard'>
+
+<div class="row jumbotron">
+    <div class="col-xs-1">&nbsp;</div>
+    <div class="col-xs-3"><img src="logo_3.png" width="60%" alt="logo"/></div>
+    <div class="col-xs-1">&nbsp;</div>
+    <div class="col-xs-4">
+
+    </div>
+    <div class="col-xs-3">
+      <div class="row">
+        <div class="panel panel-default" style="background-color: white">
+          <div class="panel heading textwhite" style="background-color: #005d37">Angemeldet als: <br><b>{{currentUser.username}}</b></div>
+          <button type="button" class="btn btn-default btn-xs">Hilfe</button>
+          <button type="button" class="btn btn-default btn-xs" id="logout">Logout</button>
+          <br>
+          <br>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="container textblack">
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-xs-12">
+            <h1 class="textgreen">Willkommen!</h1>
+
+            <h3>Sie haben 1000 unerledigte Formulare.</h3>
+        </div>
+        <div class="row">&nbsp;</div>
+    </div>
+    <div class="row">
+
+        <div class="col-xs-12">
+            <h2>Fortschritt:</h2>
+
+            <div class="progress">
+                <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
+                     style="width:12.5%">
+                    ZA_09
+                </div>
+                <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
+                     style="width:12.5%">
+                    ZA_08
+                </div>
+                <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
+                     style="width:12.5%">
+                    ZA_11
+                </div>
+                <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
+                     style="width:12.5%">
+                    ZA_23
+                </div>
+                <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
+                     style="width:12.5%">
+                    ZA_25
+                </div>
+                <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar"
+                     style="width:12.5%">
+                    ZA_19
+                </div>
+                <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar"
+                     style="width:12.5%">
+                    ZA_29
+                </div>
+                <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar"
+                     style="width:12.5%">
+                    ZA_16
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-xs-4">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <b>Erledigte Formulare</b>
+                </div>
+                <div class="panel-body pre-scrollable">
+                  <table class="table table-hover table-striped table-bordered">
+                    <thead>
+                      <th>Name</th>
+                      <th>Downloads</th>
+                    </thead>
+                    <tbody>
+                      {{#each formulare}}
+                      <tr>
+                        <td>{{name}}</td>
+                        <td>
+                        </td>
+                      </tr>
+                      {{/each}}
+                    </tbody>
+
+                  </table>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-xs-4" align="center">
+            <div class="row">&nbsp;</div>
+            <div class="row">&nbsp;</div>
+            <div class="row">&nbsp;</div>
+            <div class="row">&nbsp;</div>
+            <a class="btn btn-default btn-lg" href="#upload " data-toggle="modal">&nbsp;&nbsp;&nbsp;Hochladen&nbsp;&nbsp;</a>
+
+            <div class="row">&nbsp;</div>
+
+            <a class="btn btn-default btn-lg" href="#download" data-toggle="modal">Herunterladen</a>
+        </div>
+        <div class="col-xs-4">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <b>Unerledigte Formulare</b>
+                </div>
+                <div class="panel-body pre-scrollable">
+                <table class="table table-hover table-striped table-bordered">
+                  <thead>
+                    <th>Name</th>
+
+                  </thead>
+                  <tbody>
+                    {{#each aformulare}}
+                    <tr>
+                      <td>{{name}}</td>
+                    </tr>
+                    {{/each}}
+                  </tbody>
+
+                </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal fade" id="download" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="textgreen">Formular Herunterladen</h3>
+            </div>
+            <div class="modal-body textblack">
+                <h5>Bitte wählen Sie jenes Formular aus, welches Sie zur Bearbeitung Herunterladen möchten.</h5>
+                <hr>
+                <div class="row" align="center">
+                  <div class="panel-body pre-scrollable">
+                    <table class="table table-hover table-striped table-bordered">
+                      <thead>
+                        <th>Name</th>
+                      </thead>
+                      <tbody>
+                        {{#each aformulare}}
+                        <tr>
+                          <td>{{name}}</td>
+                          <td><a class="btn btn-default" href="{{url download=true}}"> Download </a>
+                          </td>
+                        </tr>
+                        {{/each}}
+                      </tbody>
+
+                    </table>
+                  </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="upload" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="textgreen">Formular Hochladen</h3>
+            </div>
+                <div class="modal-body textblack">
+                    <h5>Bitte wählen Sie jenes Formular aus, dessen ausgefülltes Exemplar Sie hochladen möchten.</h5>
+                    <hr>
+                    <div class="row" align="center">
+                        <input type="radio" name="formup" value="admin">&nbsp;<b>ZA_19</b>&nbsp;<br><br>
+                        <input type="radio" name="formup" value="user">&nbsp;<b>ZA_29</b>&nbsp;<br><br>
+                        <input type="radio" name="formup" value="mod">&nbsp;<b>ZA_16</b>&nbsp;<br><br>
+                    </div>
+                    <hr>
+                    <label class="control-label">Datei auswählen</label>
+                    <input class="file input-1" type="file">
+                </div>
+            <div class="modal-footer">
+                <a class="btn btn-default btn-lg" href="user_home.php">Abbrechen</a>
+                <a class="btn btn-success btn-lg" href="#">Formular Hochladen</a>
+            </div>
+        </div>
+    </div>
+</div>
+</template>
+
+<template name = 'Admin'>
+
+
+  <div class="row jumbotron">
+      <div class="col-xs-1">&nbsp;</div>
+      <div class="col-xs-3"><img src="logo_3.png" width="90%" alt="logo"/></div>
+      <div class="col-xs-1">&nbsp;</div>
+      <div class="col-xs-4">
+
+      </div>
+      <div class="col-xs-3">
+        <div class="row">
+          <div class="panel panel-default" style="background-color: white">
+            <div class="panel heading textwhite" style="background-color: #005d37">Angemeldet als: <br><b>{{currentUser.username}}</b></div>
+            <button type="button" class="btn btn-default btn-xs">Userverwaltung</button>
+            <button type="button" class="btn btn-default btn-xs">Hilfe</button>
+            <button type="button" class="btn btn-default btn-xs" id="logout">Logout</button>
+            <br>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+  <div class="container textblack">
+      <div class="row"> &nbsp; </div>
+      <div class="row">
+          <div class="col-xs-2"> &nbsp; </div>
+          <div class="col-xs-8">
+              <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Formular Suchen">
+          <span class="input-group-btn">
+          <button class="btn btn-default" type="button">Los!</button>
+          </span></div>
+          </div>
+          <div class="col-xs-2"> &nbsp; </div>
+      </div>
+      <div class="row">&nbsp;</div>
+      <div class="row">&nbsp;</div>
+      <div class="row">
+          <div class="col-xs-3">
+              <div class="panel panel-info">
+                  <div class="panel-heading">
+                      <b>Formulare</b>
+
+
+                  </div>
+                  <div class="panel-body pre-scrollable">
+                    <table class="table table-hover table-striped table-bordered">
+                      <thead>
+                        <th>Name</th>
+
+                      </thead>
+                      <tbody>
+                        {{#each aformulare}}
+                        <tr>
+                          <td>{{name}}</td>
+                          <td>
+                          </td>
+                        </tr>
+                        {{/each}}
+                      </tbody>
+
+                    </table>
+                  </div>
+              </div>
+          </div>
+          <div class="col-xs-9">
+              <div class="panel panel-info">
+                  <div class="panel-heading">
+                      <b>Formulardetails</b>
+                  </div>
+                  <div class="panel-body pre-scrollable">
+                      <b>Bezeichnung:&nbsp;</b>Formular 01F
+                      <hr/>
+                      <b>Zuletzt aktualisiert:&nbsp;</b>2015-11-17 15:22:12
+                      <hr/>
+                      <b>Zulässige Bearbeitung:&nbsp;</b>digital
+                      <hr/>
+                      <b>Dateiformat:&nbsp;</b>.docx
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="row">&nbsp;</div>
+      <div class="row">&nbsp;</div>
+      <div class="row btn-group-lg">
+          <div class="col-xs-4" align="center">
+              <a class="btn btn-success btn-lg" href="#upload" data-toggle="modal">Formular Hochladen</a>
+          </div>
+          <div class="col-xs-4" align="center">
+              <a class="btn btn-success btn-lg" href="#release" data-toggle="modal">Formular Freigeben</a>
+          </div>
+          <div class="col-xs-4" align="center">
+              <a class="btn btn-success btn-lg" href="#" role="button">Formular Löschen</a>
+          </div>
+      </div>
+  </div>
+
+  <div class="modal fade" id="release" role="dialog">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h3 class="textgreen">Formular Freigeben</h3>
+              </div>
+              <div class="modal-body">
+                <div class="panel-body pre-scrollable">
+                  <table class="table table-hover table-striped table-bordered">
+                    <thead>
+                      <th>Name</th>
+                      <th></th>
+                    </thead>
+                    <tbody>
+                      {{#each aformulare}}
+                      <tr>
+                        <td>{{name}}</td>
+                        <td><input type="checkbox" checked="false"/>
+                        </td>
+                      </tr>
+                      {{/each}}
+                    </tbody>
+
+                  </table>
+                </div>
+                  <p class="textblack">Bitte wählen Sie die Empfänger aus.</p>
+                  <hr>
+                  <div class="textgreen">
+                      <h5>Zentralausschuss&nbsp;|&nbsp;ZA&nbsp;&nbsp;<input type="checkbox"></h5>
+                  </div>
+                  <div class="textgreen">
+                      <h5>Fachausschuss&nbsp;|&nbsp;FA&nbsp;&nbsp;<input type="checkbox"></h5>
+                  </div>
+                  <div class="textgreen">
+                      <h5>Dienststellenausschuss&nbsp;|&nbsp;DA&nbsp;&nbsp;<input type="checkbox"></h5>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                  <a class="btn btn-default btn-lg" href="form_management.php">Schließen</a>
+                  <a class="btn btn-success btn-lg" href="#">Formular Freigeben</a>
+              </div>
+          </div>
+      </div>
+
+  </div>
+  <div class="modal fade" id="upload" role="dialog">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h3 class="textgreen">Formular Hochladen</h3>
+              </div>
+              <label class="control-label">Datei auswählen</label>
+              <input class="file input-a" type="file">
+              <div class="modal-footer">
+                  <a class="btn btn-default btn-lg" href="form_management.php">Schließen</a>
+                  <a class="btn btn-success btn-lg" href="#">Formular Hochladen</a>
+              </div>
+          </div>
+      </div>
+
+  </div>
+</template>
+
+<template name="Impressum">
+  <p> Impressum </p>
+</template>

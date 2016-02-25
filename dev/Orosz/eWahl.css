@@ -1,0 +1,242 @@
+/* own css */
+
+.content {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-55%);
+}
+@media (min-width: 500px) {
+    .content {
+        width: 400px;
+    }
+    
+}
+@media (min-width: 768px) {
+    .content {
+        width: 750px;
+    }
+}
+@media (min-width: 992px) {
+    .content {
+        width: 970px;
+    }
+}
+@media (min-width: 1200px) {
+    .content {
+        width: 1170px;
+    }
+}
+@media (min-height: 768px) {
+    .content {
+        max-height: 400px;
+    }
+}
+@media (height: 320px) {
+    .content {
+        top: 60%;
+    }
+}
+
+
+.pre-scrollable{
+    max-height: 250px;
+}
+@media (min-height: 768px){
+    .pre-scrollable {
+        max-height: 300px;
+    }
+}
+@media (min-height: 800px){
+    .pre-scrollable {
+        max-height: 200px;
+    }
+}
+@media (min-height: 1024px){
+    .pre-scrollable {
+        max-height: 500px;
+    }
+}
+@media (min-height: 320px) {
+    .pre-scrollable {
+        height: 150px;
+    }
+}
+@media (min-height: 1080px) {
+    .pre-scrollable {
+        height: 400px;
+    }
+}
+
+
+.body {
+    background-color: whitesmoke;
+}
+
+.header {
+    background-color: #005d37;
+    width: 101%;
+    height: 150px;
+    position: fixed;
+    top: 0%;
+
+}
+@media (min-height: 320px) {
+    .header {
+        height: 75px;
+    }
+}
+@media (min-height: 568px) {
+    .header {
+        height: 200px;
+    }
+}
+@media (min-height: 768px){
+    .header {
+        height: 150px;
+    }
+}
+@media (min-height: 800px){
+    .header {
+        height: 100px;
+    }
+}
+@media (min-height:600px){
+    .header {
+        height: 100px;
+    }
+}
+@media (min-height:1080px){
+    .header {
+        height: 200px;
+    }
+}
+
+
+.headerContentLeft {
+    position: absolute;
+    top: 50%;
+    transform: translateX(5%) translateY(-50%);
+}
+.headerContentRight {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+.footer {
+    background-color: #454a4d;
+    width: 100%;
+    height: 5%;
+    text-align: center;
+    color: white;
+    position: fixed;
+    bottom: 0px;
+
+}
+
+.footerContent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.panel-info > .panel-heading {
+    color: #ffffff;
+    background-color: #005d37;
+    border-color: #005d37;
+}
+
+.panel-info {
+    border-color: #005d37;
+}
+
+.jumbotron {
+    background-color: #005d37;
+}
+
+.btn-success {
+    background-color: #005d37;
+    border-color: #005d37;
+}
+
+.navElement {
+    background-color: #005d37;
+    color: white;
+    vertical-align: middle;
+    text-decoration: none;
+}
+
+.navElement:hover {
+    background-color: white;
+    color: #005d37;
+    vertical-align: middle;
+    text-decoration: none;
+}
+
+.textblack {
+    color: black;
+}
+
+.textred {
+    color: #c12e2a;
+}
+
+.textgreen {
+    color: #005d37;
+}
+
+.whitelink {
+    color: white;
+    text-decoration: none;
+}
+
+.whitelink:active {
+    color: white;
+    text-decoration: none;
+}
+
+.whitelink:visited {
+    color: white;
+    text-decoration: none;
+}
+
+.whitelink:hover {
+    color: #67b168;
+    text-decoration: none;
+}
+
+.whitelink:after {
+    color: white;
+    text-decoration: none;
+}
+
+.blacklink {
+    color: black;
+    text-decoration: none;
+}
+
+.blacklink:active {
+    color: black;
+    text-decoration: none;
+}
+
+.blacklink:visited {
+    color: black;
+    text-decoration: none;
+}
+
+.blacklink:hover {
+    color: #005d37;
+    text-decoration: none;
+}
+
+.blacklink:after {
+    color: black;
+    text-decoration: none;
+}
+
+.greyBackground {
+    background-color: #999999;
+}

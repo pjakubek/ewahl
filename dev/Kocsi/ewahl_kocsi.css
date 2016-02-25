@@ -1,0 +1,125 @@
+/*!
+ * Bootstrap v3.3.2 (http://getbootstrap.com)
+ * Copyright 2011-2015 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+
+
+
+/*# sourceMappingURL=bootstrap.css.map */
+
+/* own css */
+
+.panel-info > .panel-heading {
+ color: #ffffff;
+ background-color: #005d37;
+ border-color: #005d37;
+}
+.panel-info {
+ border-color: #005d37;
+}
+
+.jumbotron {
+ background-color: #005d37;
+}
+
+.btn-success {
+ background-color: #005d37;
+ border-color: #005d37;
+}
+.navElement {
+ background-color: #005d37;
+ color: white;
+ vertical-align: middle;
+ text-decoration: none;
+}
+.navElement:hover {
+ background-color: white;
+ color: #005d37;
+ vertical-align: middle;
+ text-decoration: none;
+}
+
+.textblack {
+ color: black;
+}
+
+.textred {
+ color: #c12e2a;
+}
+
+.textgreen {
+ color: #005d37;
+}
+
+.whitelink {
+ color: white;
+ text-decoration: none;
+}
+
+.whitelink:active {
+ color: white;
+ text-decoration: none;
+}
+
+.whitelink:visited {
+ color: white;
+ text-decoration: none;
+}
+
+.whitelink:hover {
+ color: black;
+ text-decoration: none;
+}
+
+.whitelink:after {
+ color: white;
+ text-decoration: none;
+}
+
+.blacklink {
+ color: black;
+ text-decoration: none;
+}
+
+.blacklink:active {
+ color: black;
+ text-decoration: none;
+}
+
+.blacklink:visited {
+ color: black;
+ text-decoration: none;
+}
+
+.blacklink:hover {
+ color: #005d37;
+ text-decoration: none;
+}
+
+.blacklink:after {
+ color: black;
+ text-decoration: none;
+}
+
+.greyBackground {
+ background-color: #999999;
+}
+
+.easy-search-input{
+ display: block;
+ width: 100%;
+ height: 34px;
+ padding: 6px 12px;
+ font-size: 14px;
+ line-height: 1.428571429;
+ color: #555;
+ background-color: #fff;
+ background-image: none;
+ border: 1px solid #ccc;
+ border-radius: 4px;
+ -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+ box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+ -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+ transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}

@@ -1,0 +1,33 @@
+//db kandidat//
+
+db.createCollection(„tasks");
+
+db.tasks.insert({vname:"Alfred",nname:"Meier",standort:"TGM",stimmen:"345",amk:"nichts"});
+
+db.tasks.insert({vname:"Fritz",nname:"Berger",standort:"TGM",stimmen:"345",amk:"nichts"});
+
+db.tasks.insert({vname:"Hans",nname:"Meier",standort:"TGM",stimmen:"345",amk:"nichts"});
+
+db.tasks.insert({vname:"Hans",nname:"Meier",standort:"TGM",stimmen:"345",amk:"nichts"});
+
+db.tasks.insert({vname:"Hans",nname:"Meier",standort:"TGM",stimmen:"345",amk:"nichts"});
+
+db.tasks.insert({vname:"Hans",nname:"Meier",standort:"TGM",stimmen:"345",amk:"nichts"});
+
+db.tasks.insert({vname:"Hans",nname:"Meier",standort:"TGM",stimmen:"345",amk:"nichts"});
+
+//update
+
+db.tasks.update({vname:"neuerName"},{$set: {vname:"alterName"}},false,true)
+
+db.tasks.update({vname:"Philip"},{$set: {vname:"Alfred"}},false,true)
+
+//packages
+
+meteor add natestrauser:x-editable-bootstrap
+meteor add workman:meteor-editable
+meteor add workman:x-editable-reactive-template
+meteor add rafaelhdr:google-charts
+meteor add easy:search
+
+
